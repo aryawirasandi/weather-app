@@ -25,6 +25,7 @@ function App() {
         .then(res => res.json())
         .then(result => {
           setWeather(result);
+          setQuery("");
           console.log(result);
         })
         .then(error => {
@@ -33,7 +34,10 @@ function App() {
     }
   }
 
-
+  function queryPlace(e){
+    return setQuery(e.target.value);
+  }
+  
   return (
     <div
       className = {
@@ -50,7 +54,7 @@ function App() {
                 type = "text"
                 placeholder = "Search"
                 className = "search-bar"
-                onChange = {e => setQuery(e.target.value)}
+                onChange = {queryPlace}
                 value={query}
                 onKeyPress={search}
               />
